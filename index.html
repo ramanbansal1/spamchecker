@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Spam Checker</title>
+
+  <!-- HTML -->
+  <style>
+  body{
+  	display: flex;
+  	justify-content: center;
+  	align-items: center
+  }
+  section{
+  	max-width: 500px
+  }
+  </style>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+      ScamCheck
+    </div>
+    <div role="button" class="bars" id="bars">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div id="menu-items">
+      <div id="close-icon">
+        &times;
+      </div>
+      <ul>
+        <li><a href="">Source Code</a></li>
+        <li><a href="/">Dataset</a></li>
+        <li class="heading">About Me</li>
+        <li class="paragraph">This is a free open source spam detection website which uses machine learning to predict whether a message is spam or not.</li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+
+<div>
+  <section class="searchbar">
+  <form method="GET">
+    <textarea class="block" name="message" id="message" rows="5" placeholder="Enter message....." minlength=10 required>{{message}}</textarea>
+    <button class="block" type="submit">Check Message</button>
+  </form>
+  </section>
+  {% if result != None %}
+	  {% if result == 0 %}
+	  <section class="result">
+	    <div class="icon">
+	      ✓
+	    </div>
+	    <div class="message">
+	      This is not spam. 
+	    </div>
+	  </section>
+	  {% else %}
+	  <section class="result">
+	    <div class="icon">
+	      &times;
+	    </div>
+	    <div class="message">
+	      This is spam. 
+	    </div>
+	  </section>
+	  {% endif %}
+  {% endif %}
+</div>
+  <script src="/static/main.js"></script>
+</body>
+
+</html>
